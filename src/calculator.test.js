@@ -32,3 +32,20 @@ subtract.forEach(x => {
     expect(calculator.subtract(a, b)).toBe(expected)
   })
 })
+
+const divide = [
+  [15, 3, 5],
+  [10, 4, 2.5],
+  [2.25, 10, 0.225],
+  [-121, 11, -11],
+  [72, '8', 'Argument contains non-number'],
+  ['242', 11, 'Argument contains non-number']
+]
+
+divide.forEach(x => {
+  const [a, b, expected] = x
+
+  test(`${a} / ${b} return ${expected}`, () => {
+    expect(calculator.divide(a, b)).toBe(expected)
+  })
+})
