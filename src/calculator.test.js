@@ -38,8 +38,8 @@ const divide = [
   [10, 4, 2.5],
   [2.25, 10, 0.225],
   [-121, 11, -11],
-  [72, '8', 'Argument contains non-number'],
-  ['242', 11, 'Argument contains non-number']
+  [72, "'8'", 'Argument contains non-number'],
+  ["'242'", 11, 'Argument contains non-number']
 ]
 
 divide.forEach(x => {
@@ -47,5 +47,20 @@ divide.forEach(x => {
 
   test(`${a} / ${b} return ${expected}`, () => {
     expect(calculator.divide(a, b)).toBe(expected)
+  })
+})
+
+const multiply = [
+  [2, 21, 42],
+  [-7, 3, -21],
+  [2.5, -5, -12.5],
+  ["'23'", 100, 'Argument contains non-number']
+]
+
+multiply.forEach(x => {
+  const [a, b, expected] = x
+
+  test(`${a} * ${b} return ${expected}`, () => {
+    expect(calculator.multiply(a, b)).toBe(expected)
   })
 })
