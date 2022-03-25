@@ -1,11 +1,14 @@
-const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const LETTERSLOWERCASE = LETTERS.toLowerCase()
-
 function caesarCipher (string, shift) {
+  const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const LETTERSLOWERCASE = LETTERS.toLowerCase()
+
   return string.split('')
     .map(letter => {
-      if (/[A-Z]/.test(letter)) return LETTERS[(LETTERS.indexOf(letter) + shift) % 26]
-      if (/[a-z]/.test(letter)) return LETTERSLOWERCASE[(LETTERSLOWERCASE.indexOf(letter) + shift) % 26]
+      let index = (LETTERS.indexOf(letter.toUpperCase()) + shift) % 26
+      if (index < 0) index += 26
+
+      if (/[A-Z]/.test(letter)) return LETTERS[index]
+      if (/[a-z]/.test(letter)) return LETTERSLOWERCASE[index]
       return letter
     })
     .join('')
